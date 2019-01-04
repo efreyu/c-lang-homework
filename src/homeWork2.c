@@ -27,6 +27,11 @@
 #include <stdio.h>
 #include <math.h>
 
+#define ARRAY_LENGTH 15
+#define boolean int
+#define true 1
+#define false 0
+
 int calculateSquareEquality(int a, int b, int c, float* x1, float* x2);
 int task1();
 int task2();
@@ -92,7 +97,7 @@ int calculateSquareEquality(int a, int b, int c, float* x1, float* x2) {
     return -1;
 }
 
-int task1(){
+int task1() {
     int a, b, c;
     float x1, x2;
     printf("Enter a value for the variable 'a' ");
@@ -116,10 +121,42 @@ int task1(){
     }
 }
 
-int task2(){
-    //
+int arrayChanged(int *arr, int count) {
+    boolean isNonOdd = false;
+    for (int i = 0; i < count; ++i) {
+//        arr[i] = arr[i] *2; printf("check %d\n", arr[i] % 2); // for debug
+        if (arr[i] % 2 != 0) {
+            isNonOdd = true;
+        }
+    }
+    if (isNonOdd) {
+        for (int i = 0; i < count; ++i) {
+            arr[i] = arr[i] *2;
+        }
+    }
+    return isNonOdd;
 }
 
-int task3(){
+int task2() {
+    int userArrayLength;
+    printf("Enter the length of the array (press 0 to choose default value: %d): \n", ARRAY_LENGTH);
+    scanf("%d", &userArrayLength);
+    int arrayLength = userArrayLength != 0 ? userArrayLength : ARRAY_LENGTH,
+    array[arrayLength];
+    //Наполняем массив
+    for (int i = 0; i < arrayLength; ++i) {
+        array[i] = i + 1;
+//        array[i] = i + 1; // for debug
+    }
+    //Если массив был изменён то вывести все числа массива
+    if (arrayChanged(array, arrayLength)) {
+        for (int i = 0; i < arrayLength; ++i) {
+            printf("variable 'array' contains by index '%d' %d\n", i, array[i]);
+        }
+    }
+
+}
+
+int task3() {
     //
 }
