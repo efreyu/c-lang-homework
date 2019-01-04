@@ -35,11 +35,11 @@ int task3();
 int main(int argc, const char* argv[]) {
     int input, loop = 1;
     do {
-        printf("Введите номер задания:(1/2/3) 0 для выхода\n");
+        printf("Enter task number: (1/2/3) 0 to exit\n");
         scanf("%d", &input);
         switch (input) {
             case 0:
-                printf("Спасибо за просмотр!\n");
+                printf("Thank you for watching!\n");
                 loop = 0;
                 break;
             case 1:
@@ -52,7 +52,7 @@ int main(int argc, const char* argv[]) {
                 task3();
                 break;
             default:
-                printf("Вы ввели недопустимый символ.\n");
+                printf("You entered an invalid character.\n");
                 break;
         }
     } while (loop);
@@ -61,40 +61,65 @@ int main(int argc, const char* argv[]) {
 }
 
 int calculateSquareEquality(int a, int b, int c, float* x1, float* x2) {
-    // a * x ^ 2 + b * x + c = 0
-    double x;
+    /*
+     * Решение квадратных уравнений
+     * a * x ^ 2 + b * x + c = 0
+     * Вычисляем дискриминант
+     */
+    double squareRoots = pow(b, 2) - 4*a*c;
+    printf("The discriminant is equal to: %.5f\n",squareRoots);
 
-    if((b*b - 4*a*c) >= 0) {
-        //Если дискриминант больше или равен 0
-        *x1 = ( -1*b + sqrt(b*b - 4*a*c) ) / (2 * a);
-        printf("Первый корень равен %.5f", x);
-        *x2 = ( -1*b - sqrt(b*b - 4*a*c) ) / (2 * a);
-        printf("Второй корень равен %.5f", x);
+    //Если дискриминант больше или равен 0 то корни есть
+    //Если нет то корней нет
+    if(squareRoots > 0) {
+        //Два корня
+//        *x1 = ( -1*b + sqrt(b*b - 4*a*c) ) / (2 * a);
+        *x1 = (-b + sqrt(squareRoots)) / 2 * a;
+        printf("The first square root is %.5f\n", x1);
+//        *x2 = ( -1*b - sqrt(b*b - 4*a*c) ) / (2 * a);
+        *x2 = (-b - sqrt(squareRoots)) / 2 * a;
+        printf("The second square root is %.5f\n", x2);
+
+        return 1;
+    } else if (squareRoots == 0) {
+        //Один корень
+        *x1 = -b / 2 * a;
+        printf("The one square root is %.5f\n", x1);
+        return 0;
     }
+
+    // Нет корней
+    return -1;
 }
 
 int task1(){
     int a, b, c;
     float x1, x2;
-    printf("Введите значение для переменной 'a'");
+    printf("Enter a value for the variable 'a' ");
     scanf("%d", &a);
-    printf("Введите значение для переменной 'b'");
+    printf("Enter a value for the variable 'b' ");
     scanf("%d", &b);
-    printf("Введите значение для переменной 'c'");
+    printf("Enter a value for the variable 'c' ");
     scanf("%d", &c);
 
-    calculateSquareEquality(a, b, c, &x1, &x2);
-    /*switch (calculateSquareEquality(a, b, c, &x1, &x2)) {
+//    calculateSquareEquality(a, b, c, &x1, &x2);
+    switch (calculateSquareEquality(a, b, c, &x1, &x2)) {
         case -1:
-            printf("Yep! -1\n");
+            printf("The equation has no square roots.\n");
             break;
         case 0:
-            printf("Yep! 0\n");
+            printf("The equation has one square root.\n");
             break;
         case 1:
-            printf("Yep! 1\n");
+            printf("The equation has two square roots.\n");
             break;
-    }*/
+    }
 }
-int task2(){}
-int task3(){}
+
+int task2(){
+    //
+}
+
+int task3(){
+    //
+}
