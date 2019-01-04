@@ -26,6 +26,8 @@
  */
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
+#include <assert.h>
 
 #define ARRAY_LENGTH 15
 #define boolean int
@@ -33,11 +35,15 @@
 #define false 0
 
 int calculateSquareEquality(int a, int b, int c, float* x1, float* x2);
-int task1();
-int task2();
-int task3();
+int arrayChanged(int *arr, int count);
+int randint(int n);
+void convertToShort(unsigned int* array, int length);
+void task1();
+void task2();
+void task3();
 
 int main(int argc, const char* argv[]) {
+
     int input, loop = 1;
     do {
         printf("Enter task number: (1/2/3) 0 to exit\n");
@@ -72,7 +78,7 @@ int calculateSquareEquality(int a, int b, int c, float* x1, float* x2) {
      * Вычисляем дискриминант
      */
     double squareRoots = pow(b, 2) - 4*a*c;
-    printf("The discriminant is equal to: %.5f\n",squareRoots);
+    printf("The discriminant is equal to: %.2f\n",squareRoots);
 
     //Если дискриминант больше или равен 0 то корни есть
     //Если нет то корней нет
@@ -80,16 +86,16 @@ int calculateSquareEquality(int a, int b, int c, float* x1, float* x2) {
         //Два корня
 //        *x1 = ( -1*b + sqrt(b*b - 4*a*c) ) / (2 * a);
         *x1 = (-b + sqrt(squareRoots)) / 2 * a;
-        printf("The first square root is %.5f\n", x1);
+        printf("The first square root is %.2f\n", x1);
 //        *x2 = ( -1*b - sqrt(b*b - 4*a*c) ) / (2 * a);
         *x2 = (-b - sqrt(squareRoots)) / 2 * a;
-        printf("The second square root is %.5f\n", x2);
+        printf("The second square root is %.2f\n", x2);
 
         return 1;
     } else if (squareRoots == 0) {
         //Один корень
         *x1 = -b / 2 * a;
-        printf("The one square root is %.5f\n", x1);
+        printf("The one square root is %.2f\n", x1);
         return 0;
     }
 
@@ -97,7 +103,49 @@ int calculateSquareEquality(int a, int b, int c, float* x1, float* x2) {
     return -1;
 }
 
-int task1() {
+int arrayChanged(int* arr, int count) {
+
+    boolean isNonOdd = false;
+    for (int i = 0; i < count; ++i) {
+//        arr[i] = arr[i] *2; printf("check %d\n", arr[i] % 2); // for debug
+        if (arr[i] % 2 != 0) {
+            isNonOdd = true;
+            // Удваиваем нечётные
+            arr[i] = arr[i] *2;
+        }
+    }
+    /*if (isNonOdd) {
+        for (int i = 0; i < count; ++i) {
+            arr[i] = arr[i] *2;
+        }
+    }*/
+    return isNonOdd;
+}
+
+/*
+ * Returns an integer in the range (0, n)
+ */
+int randint(int n) {
+
+    if ((n - 1) == RAND_MAX) {
+        return rand();
+    } else {
+        assert (n <= RAND_MAX);
+
+        int end = RAND_MAX / n;
+        assert (end > 0);
+        end *= n;
+
+        int r;
+        while ((r = rand()) >= end);
+
+        return r % n;
+    }
+
+}
+
+void task1() {
+
     int a, b, c;
     float x1, x2;
     printf("Enter a value for the variable 'a' ");
@@ -121,42 +169,57 @@ int task1() {
     }
 }
 
-int arrayChanged(int *arr, int count) {
-    boolean isNonOdd = false;
-    for (int i = 0; i < count; ++i) {
-//        arr[i] = arr[i] *2; printf("check %d\n", arr[i] % 2); // for debug
-        if (arr[i] % 2 != 0) {
-            isNonOdd = true;
-        }
-    }
-    if (isNonOdd) {
-        for (int i = 0; i < count; ++i) {
-            arr[i] = arr[i] *2;
-        }
-    }
-    return isNonOdd;
-}
+void task2() {
 
-int task2() {
     int userArrayLength;
     printf("Enter the length of the array (press 0 to choose default value: %d): \n", ARRAY_LENGTH);
     scanf("%d", &userArrayLength);
     int arrayLength = userArrayLength != 0 ? userArrayLength : ARRAY_LENGTH,
     array[arrayLength];
     //Наполняем массив
+    printf("Original array contains [key:val]: ");
     for (int i = 0; i < arrayLength; ++i) {
-        array[i] = i + 1;
-//        array[i] = i + 1; // for debug
+//        array[i] = i + 1; // for debug - последовательные числа
+        array[i] = randint(20);
+        printf("[%d:%d]", i, array[i]);
     }
+    printf("\n");
     //Если массив был изменён то вывести все числа массива
     if (arrayChanged(array, arrayLength)) {
+        printf("Array has been changed, and contains [key:val]: ");
         for (int i = 0; i < arrayLength; ++i) {
-            printf("variable 'array' contains by index '%d' %d\n", i, array[i]);
+            printf("[%d:%d]", i, array[i]);
         }
+        printf("\n");
+    } else {
+        printf("Array is not changed.\n");
     }
 
 }
 
-int task3() {
-    //
+void task3() {
+
+    int userArrayLength;
+    printf("Enter the length of the array (press 0 to choose default value: %d): \n", ARRAY_LENGTH);
+    scanf("%d", &userArrayLength);
+    int arrayLength = userArrayLength != 0 ? userArrayLength : ARRAY_LENGTH;
+    unsigned int array[arrayLength];
+    //Наполняем массив
+    printf("Original array contains [key:val]: ");
+    for (int i = 0; i < arrayLength; ++i) {
+//        array[i] = i + 1; // for debug - последовательные числа
+        array[i] = randint(4000000);
+        printf("[%d:%d]", i, array[i]);
+    }
+    printf("\n");
+    convertToShort(array, arrayLength);
+
+}
+
+void convertToShort(unsigned int* array, int length) {
+    printf("Array has been changed, and contains [key:val]: ");
+    for (int i = 0; i < length*2; ++i) {
+        printf("[%d:%d]", i, (unsigned short)array[i]);
+    }
+    printf("\n");
 }
