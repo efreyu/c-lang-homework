@@ -1,4 +1,5 @@
 /*
+ * link to repo https://github.com/efreyu/c-lang-homework/blob/master/src/homeWork2.c
  * Created by efreyu on 04.01.19.
  *
  * 1. Указатели.

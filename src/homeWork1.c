@@ -1,4 +1,5 @@
 /*
+ * link to repo https://github.com/efreyu/c-lang-homework/blob/master/src/homeWork1.c
  * Created by efreyu on 31.12.18.
  * Для практики обернул всё в функции task1 task2...
  * И сделал выбор задания в консоли
