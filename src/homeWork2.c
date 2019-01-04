@@ -1,5 +1,4 @@
 /*
- * link to repo https://github.com/efreyu/c-lang-homework/blob/master/src/homeWork2.c
  * Created by efreyu on 04.01.19.
  *
  * 1. Указатели.
@@ -38,7 +37,7 @@
 int calculateSquareEquality(int a, int b, int c, float* x1, float* x2);
 int arrayChanged(int *arr, int count);
 int randint(int n);
-void convertToShort(unsigned int* array, int length);
+void convertToShort(int32_t* array, int length);
 void task1();
 void task2();
 void task3();
@@ -204,7 +203,7 @@ void task3() {
     printf("Enter the length of the array (press 0 to choose default value: %d): \n", ARRAY_LENGTH);
     scanf("%d", &userArrayLength);
     int arrayLength = userArrayLength != 0 ? userArrayLength : ARRAY_LENGTH;
-    unsigned int array[arrayLength];
+    int32_t array[arrayLength];
     //Наполняем массив
     printf("Original array contains [key:val]: ");
     for (int i = 0; i < arrayLength; ++i) {
@@ -217,10 +216,10 @@ void task3() {
 
 }
 
-void convertToShort(unsigned int* array, int length) {
+void convertToShort(int32_t* array, int length) {
     printf("Array has been changed, and contains [key:val]: ");
     for (int i = 0; i < length*2; ++i) {
-        printf("[%d:%d]", i, (unsigned short)array[i]);
+        printf("[%d:%d]", i, (int16_t)array[i]);
     }
     printf("\n");
 }
