@@ -6,7 +6,11 @@
 #include <string.h>
 #include <ctype.h>
 
-//isalpha() isdigit() isspace() isupper() islower() toupper() tolower()
+/*
+ * strcmp() сравнене
+ * strcpy() копирование
+ * isalpha() isdigit() isspace() isupper() islower() toupper() tolower()
+ */
 void helloFunc(char *name, char *out) {
     char welcome[256] = "Hello, ";
     name[0] = tolower(name[0]);
@@ -30,7 +34,8 @@ int main(int argc, const char *argv[]) {
     char name[256];
     char result[256];
 
-    fgets(name, 255, stdin);
+    printf("Insert your name:\n");
+    fgets(name, 256, stdin);
 
     helloFunc(name, result);
 
