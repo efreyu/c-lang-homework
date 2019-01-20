@@ -107,7 +107,7 @@ int task3() {
         summ += input;
     } while (++i < NUMBERS_COUNT);
 
-    printf("Сумма %d введённых чисел: %.2f\n", NUMBERS_COUNT, summ / NUMBERS_COUNT);
+    printf("Среднее арифметическое %d введённых чисел: %.2f\n", NUMBERS_COUNT, summ / NUMBERS_COUNT);
 
 }
 
