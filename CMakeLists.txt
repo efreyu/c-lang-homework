@@ -3,6 +3,6 @@ project(c_lang_homework C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(c_lang_homework src/lesson14_memory.c)
+add_executable(c_lang_homework src/homeWork3.c)
 
 target_link_libraries(c_lang_homework m)
