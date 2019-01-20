@@ -175,7 +175,7 @@ void task2() {
     printf("Enter the length of the array (press 0 to choose default value: %d): \n", ARRAY_LENGTH);
     scanf("%d", &userArrayLength);
     int arrayLength = userArrayLength != 0 ? userArrayLength : ARRAY_LENGTH,
-    array[arrayLength];
+        array[arrayLength];
     //Наполняем массив
     printf("Original array contains [key:val]: ");
     for (int i = 0; i < arrayLength; ++i) {
