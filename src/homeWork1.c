@@ -112,12 +112,15 @@ int task3() {
 }
 
 int task4() {
-
+    // Ограничение вывода
+    const int MIN_ROWS = 3;
+    const int MAX_ROWS = 30;
     printf("Вывод н экран равнобедренного треугольника.\n");
     printf("Введите число строк: ");
     int rows;
     scanf("%d", &rows);
-    for (int i = 0; i <= rows; i++) {
+    rows = (rows >= MIN_ROWS && rows <= MAX_ROWS) ? rows : MAX_ROWS;
+    for (int i = 0; i < rows; i++) {
         for (int j = 0; j < rows - i; ++j) {
             printf(" ");
         }
