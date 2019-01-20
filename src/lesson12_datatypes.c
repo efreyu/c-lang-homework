@@ -42,4 +42,6 @@ int main(int argc, const char *argv[]) {
     printFraction(f2);
     fractionMultiply(f1, f2, &result);
     printFraction(result);
+
+    return 0;
 }
