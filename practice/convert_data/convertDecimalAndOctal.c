@@ -2,7 +2,7 @@
  * Created by efreyu on 1/25/19.
  *
  * Конвертация десятичных чисел в восмеричные и наоборот
- * Convert numbers: decimal to octal and binary to decimal
+ * Convert numbers: decimal to octal and octal to decimal
  */
 #include <stdio.h>
 
