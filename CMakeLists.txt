@@ -3,6 +3,6 @@ project(c_lang_homework C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(c_lang_homework practice/base/base6.c)
+add_executable(c_lang_homework practice/convertInt/convertDecimalAndBinary.c)
 
 target_link_libraries(c_lang_homework m)
