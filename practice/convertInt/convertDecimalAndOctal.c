@@ -1,9 +1,8 @@
 /*
  * Created by efreyu on 1/25/19.
- * Конвертация десятичных чисел в двоичные и наоборот
- * Convert decimal to binary and binary to decimal
  *
- * test case: enter first 10001, then 17
+ * Конвертация десятичных чисел в восмеричные и наоборот
+ * Convert numbers: decimal to octal and binary to decimal
  */
 #include <stdio.h>
 

@@ -1,7 +1,8 @@
 /*
  * Created by efreyu on 1/25/19.
+ *
  * Конвертация десятичных чисел в двоичные и наоборот
- * Convert decimal to binary and binary to decimal
+ * Convert numbers: decimal to binary and binary to decimal
  *
  * test case: enter first 10001, then 17
  */
