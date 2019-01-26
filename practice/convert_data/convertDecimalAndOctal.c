@@ -13,12 +13,12 @@ long long convertOctalToDecimal(int octalNumber);
 int main(int argc, const char *argv[]) {
 
     int decimalNumber, octalNumber;
-    printf("Enter your decimal number");
+    printf("Enter your decimal number: ");
     scanf("%d", &decimalNumber);
     printf("%d is your decimal number and it is equivalent to octal %d\n", decimalNumber,
            convertDecimalToOctal(decimalNumber));
 
-    printf("Enter your octal number");
+    printf("Enter your octal number: ");
     scanf("%d", &octalNumber);
     printf("%d is your octal number and it is equivalent to decimal %lld\n", octalNumber,
            convertOctalToDecimal(octalNumber));

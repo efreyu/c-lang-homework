@@ -9,7 +9,7 @@ int main(int argc, const char *argv[]) {
     int n;
     unsigned long long factorial = 1;
 
-    printf("Enter your number:");
+    printf("Enter your number: ");
     scanf("%d", &n);
 
     if (n < 0) {

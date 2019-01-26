@@ -16,11 +16,11 @@ long long convertDecimalToBinary(int n);
 int main(int argc, const char *argv[]) {
 
     long long n;
-    printf("Enter your binary number");
+    printf("Enter your binary number: ");
     scanf("%lld", &n);
     printf("%lld is your binary number and it is equivalent to decimal %d\n", n, convertBinaryToDecimal(n));
 
-    printf("Enter your decimal number");
+    printf("Enter your decimal number: ");
     scanf("%d", &n);
     printf("%lld is your decimal number and it is equivalent to binary %lld\n", n, convertDecimalToBinary(n));
 

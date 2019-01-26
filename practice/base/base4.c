@@ -9,7 +9,7 @@
 int main(int argc, const char *argv[]) {
     int number, originalNumber, remainder, result = 0, n = 0;
 
-    printf("Enter your number:");
+    printf("Enter your number: ");
     scanf("%d", &number);
 
     originalNumber = number;

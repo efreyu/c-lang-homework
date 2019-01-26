@@ -11,7 +11,7 @@ int main(int argc, const char *argv[]) {
 
     int year;
 
-    printf("Enter year:");
+    printf("Enter year: ");
     scanf("%d", &year);
 
     if (yearIsLeap(&year) == 0) {

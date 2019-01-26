@@ -10,7 +10,7 @@
 int main(int argc, const char *argv[]) {
     int low, high, temp1, temp2, remainder, n = 0, result = 0;
 
-    printf("Enter your two numbers:");
+    printf("Enter your two numbers: ");
     scanf("%d %d", &low, &high);
 
     for (int i = low + 1; i < high; ++i) {

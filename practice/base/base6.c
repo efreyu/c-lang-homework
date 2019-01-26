@@ -10,7 +10,7 @@ long int fact(int n);
 int main(int argc, const char *argv[]) {
 
     int n;
-    printf("Enter your number:");
+    printf("Enter your number: ");
     scanf("%d", &n);
     if (n > 0) {
         printf("The factorial of %d is %ld\n", n, fact(n));
