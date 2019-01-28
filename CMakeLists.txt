@@ -3,6 +3,6 @@ project(c_lang_homework C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(c_lang_homework practice/convert_data/convertBinaryAndOctal.c)
+add_executable(c_lang_homework algorithm/lesson3/hw/hw1.c)
 
 target_link_libraries(c_lang_homework m)
