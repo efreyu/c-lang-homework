@@ -20,15 +20,16 @@ int main(int argc, const char *argv[]) {
     printf("-------------------------------------------------------------\n");
 
     int a;
+    long int g;
+
     long b;
     long long c;
 
     double e;
     long double f;
-    long int g;
 
     printf("Size of integer type - %ld bytes\n", sizeof(a));// 4 bytes
-    printf("Size of long integer type - %ld bytes\n", sizeof(g));// 16 bytes
+    printf("Size of long integer type - %ld bytes\n", sizeof(g));// 8 bytes
     printf("Size of long type - %ld bytes\n", sizeof(b));// 8 bytes
     printf("Size of long long type - %ld bytes\n", sizeof(c));// 8 bytes
     printf("Size of double type - %ld bytes\n", sizeof(e));// 8 bytes
