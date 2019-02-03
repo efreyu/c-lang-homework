@@ -11,7 +11,7 @@ void fillArray(int rows, int cols, int **array) {
     int i, j;
     for (i = 0; i < rows; ++i) {
         for (j = 0; j < cols; ++j) {
-            array[i][j] = i * j;
+            array[i][j] = (i + 1) * (j + 1);
         }
     }
 }
@@ -21,7 +21,6 @@ void dump(int rows, int cols, int **array) {
     for (i = 0; i < rows; ++i) {
         printf("%d => [", i);
         for (j = 0; j < cols; ++j) {
-            array[i][j] = i * j;
             printf("    [%d:%d] ", j, array[i][j]);
         }
         printf("]\n");

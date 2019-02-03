@@ -13,7 +13,7 @@ void func(int array[ROWS][COLS]) {
     int i, j;
     for (i = 0; i < ROWS; ++i) {
         for (j = 0; j < COLS; ++j) {
-            array[i][j] = i * j;
+            array[i][j] = (i + 1) * (j + 1);
         }
     }
 }
@@ -22,7 +22,7 @@ void func_vla(int rows, int cols, int array[rows][cols]) {
     int i, j;
     for (i = 0; i < rows; ++i) {
         for (j = 0; j < cols; ++j) {
-            array[i][j] = i * j;
+            array[i][j] = (i + 1) * (j + 1);
         }
     }
 }
