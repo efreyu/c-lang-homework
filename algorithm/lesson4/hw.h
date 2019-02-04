@@ -87,23 +87,12 @@ int horse(int x, int y, int step_number) {
 }
 
 int start_chess() {
-//    Coord result[MAX_SIZE * MAX_SIZE];
-//    Coord steps[MAX_SIZE * MAX_SIZE];//шаги
+
     int step_number = 1;
-    //init variable and start position
+
     int x = MAX_SIZE - 1, y = 1;//стандартное положение коня на доске
     fillArrayBoard(MAX_SIZE, MAX_SIZE, board);
-//    fillArray(steps);
-//    fillArray(result);
-//    board[x][y] = step_number;
-//    dump(MAX_SIZE, MAX_SIZE, board);
-//    steps[step_number].x = MAX_SIZE - 1;
-//    steps[step_number].y = 1;
-//    for (int i = 0; i < needCount; ++i) {
-//        printf("%d:%d ", i, steps[i].x);
-//        printf("%d:%d ", i, steps[i].y);
-//    }
-//    step(x, y, board, steps, step_number, result);
+
     horse(x, y, step_number);
     dump(MAX_SIZE, MAX_SIZE, board);
 }

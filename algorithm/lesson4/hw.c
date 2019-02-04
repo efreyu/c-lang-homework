@@ -7,6 +7,6 @@
 
 int main(int argc, const char *argv[]) {
     start_chess();
-    printf("test");
+//    printf("test");
     return 0;
 }
