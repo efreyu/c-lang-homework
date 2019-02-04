@@ -32,22 +32,22 @@ void dump(int rows, int cols, int array[rows][cols]) {
     for (i = 0; i < rows; ++i) {
         printf("%d => [", i);
         for (j = 0; j < cols; ++j) {
-            printf("[%2d] ", /*j, */array[i][j]);
+            printf("[%5d] ", /*j, */array[i][j]);
         }
         printf("]\n");
     }
 }
 
-void fillArrayBoard(int rows, int cols, int array[rows][cols]) {
+void fillArray(int rows, int cols, int array[rows][cols], int val) {
     int i, j;
     for (i = 0; i < rows; ++i) {
         for (j = 0; j < cols; ++j) {
-            array[i][j] = 0;
+            array[i][j] = val;
         }
     }
 }
 
-int fillArray(Coord *steps) {
+int fillArrayCoord(Coord *steps) {
     for (int i = 0; i < (MAX_SIZE * MAX_SIZE); ++i) {
         steps[i].x = 0;
         steps[i].y = 0;
@@ -86,12 +86,42 @@ int horse(int x, int y, int step_number) {
     return 0;
 }
 
-int start_chess() {
+int routes(int row, int col, int array[MAX_SIZE][MAX_SIZE]) {
+    if (row == 0 || col == 0) {
+        return 1;
+    } else {
+        if (array[row][col] == 1) {
+            return routes(row - 1, col, array) + routes(row, col - 1, array);
+        }
 
+        return 0;
+    }
+}
+
+int start_chess() {
+    //one
+    int array[MAX_SIZE][MAX_SIZE];
+    int collision[MAX_SIZE][MAX_SIZE];
+    fillArray(MAX_SIZE, MAX_SIZE, collision, 1);
+
+    collision[2][9] = 0;
+    collision[9][4] = 0;
+    collision[5][5] = 0;
+    collision[2][1] = 0;
+
+    for (int i = 0; i < MAX_SIZE; ++i) {
+        for (int j = 0; j < MAX_SIZE; ++j) {
+            array[i][j] = routes(i, j, collision);
+        }
+    }
+    dump(MAX_SIZE, MAX_SIZE, array);
+
+    printf("\n\n");
+    //two
     int step_number = 1;
 
     int x = MAX_SIZE - 1, y = 1;//стандартное положение коня на доске
-    fillArrayBoard(MAX_SIZE, MAX_SIZE, board);
+    fillArray(MAX_SIZE, MAX_SIZE, board, 0);
 
     horse(x, y, step_number);
     dump(MAX_SIZE, MAX_SIZE, board);
