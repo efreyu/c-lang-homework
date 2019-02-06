@@ -24,6 +24,9 @@ Coord moves[8] = {//x, y
         {-1, -2}
 };
 
+Coord steps[MAX_SIZE * MAX_SIZE];
+
+
 int board[MAX_SIZE][MAX_SIZE];//поле
 int maxSteps = MAX_SIZE * MAX_SIZE - 1;
 
@@ -51,6 +54,7 @@ int fillArrayCoord(Coord *steps) {
     for (int i = 0; i < (MAX_SIZE * MAX_SIZE); ++i) {
         steps[i].x = 0;
         steps[i].y = 0;
+//        printf("%d\n", steps[i].x);
     }
 }
 
@@ -70,10 +74,11 @@ int horse(int x, int y, int step_number) {
     int next_x, next_y;
 
     board[x][y] = step_number;
+    steps[step_number].x = x;
+    steps[step_number].y = y;
     if (step_number >= maxSteps) {
         return 1;
     }
-
 //    step_number++;
     for (int i = 0; i < 8; ++i) {
         next_x = x + moves[i].x;
@@ -83,6 +88,33 @@ int horse(int x, int y, int step_number) {
             return 1;
         }
     }
+    return 0;
+}
+
+int knight(int x, int y, int StepNumber) {
+    int next_x, next_y, currentStep;
+
+    board[x][y] = StepNumber;
+    steps[StepNumber].x = x;
+    steps[StepNumber].y = y;
+    if (StepNumber >= maxSteps) {
+        return 0;
+    }
+
+    StepNumber++;
+    //Поиск пути
+    for (int i = 0; i < 8; ++i) {
+        next_x = x + moves[i].x;
+        next_y = y + moves[i].y;
+
+        currentStep = horse(next_x, next_y, StepNumber);
+        if (check_board(next_x, next_y) && (currentStep == 1 || currentStep == 0)) {
+            return 1;
+        }
+    }
+    printf("%d\n", StepNumber);
+//    horse(next_x, next_y, StepNumber);
+    //exit
     return 0;
 }
 
@@ -100,7 +132,7 @@ int routes(int row, int col, int array[MAX_SIZE][MAX_SIZE]) {
 
 int start_chess() {
     //one
-    int array[MAX_SIZE][MAX_SIZE];
+    /*int array[MAX_SIZE][MAX_SIZE];
     int collision[MAX_SIZE][MAX_SIZE];
     fillArray(MAX_SIZE, MAX_SIZE, collision, 1);
 
@@ -116,13 +148,18 @@ int start_chess() {
     }
     dump(MAX_SIZE, MAX_SIZE, array);
 
-    printf("\n\n");
+    printf("\n\n");*/
+
     //two
     int step_number = 1;
+    fillArrayCoord(steps);
 
     int x = MAX_SIZE - 1, y = 1;//стандартное положение коня на доске
     fillArray(MAX_SIZE, MAX_SIZE, board, 0);
 
-    horse(x, y, step_number);
-    dump(MAX_SIZE, MAX_SIZE, board);
+    knight(x, y, step_number);
+//    dump(MAX_SIZE, MAX_SIZE, board);
+    for (int i = 0; i < (MAX_SIZE * MAX_SIZE); ++i) {
+//        printf("%d\n", steps[i].x);
+    }
 }
